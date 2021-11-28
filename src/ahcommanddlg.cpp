@@ -148,7 +148,7 @@ AHCommandDlg::AHCommandDlg(PsiAccount *pa, const Jid &receiver) : QDialog(nullpt
 
 void AHCommandDlg::refreshCommands()
 {
-    ui_.cb_commands->clear();
+    ui_.cb_command->clear();
     pb_execute->setEnabled(false);
 
     ui_.busy->start();
@@ -161,19 +161,19 @@ void AHCommandDlg::listReceived()
 {
     JT_AHCGetList *task_list = static_cast<JT_AHCGetList *>(sender());
     for (const AHCommandItem &i : task_list->commands()) {
-        ui_.cb_commands->addItem(i.name);
+        ui_.cb_command->addItem(i.name);
         commands_.append(i);
     }
-    pb_execute->setEnabled(ui_.cb_commands->count() > 0);
+    pb_execute->setEnabled(ui_.cb_command->count() > 0);
     ui_.busy->stop();
 }
 
 void AHCommandDlg::executeCommand()
 {
-    if (ui_.cb_commands->count() > 0) {
+    if (ui_.cb_command->count() > 0) {
         ui_.busy->start();
-        Jid             to(commands_[ui_.cb_commands->currentIndex()].jid);
-        QString         node = commands_[ui_.cb_commands->currentIndex()].node;
+        Jid             to(commands_[ui_.cb_command->currentIndex()].jid);
+        QString         node = commands_[ui_.cb_command->currentIndex()].node;
         AHCExecuteTask *t    = new AHCExecuteTask(to, AHCommand(node), pa_->client()->rootTask());
         connect(t, SIGNAL(finished()), SLOT(commandExecuted()));
         new AHCExecuteTaskWrapper(pa_->psi(), t);
