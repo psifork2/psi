@@ -36,7 +36,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="cb_toolbars">
+      <widget class="QComboBox" name="cb_toolbar">
        <property name="sizePolicy">
         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -350,7 +350,7 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>cb_toolbars</tabstop>
+  <tabstop>cb_toolbar</tabstop>
   <tabstop>pb_addToolbar</tabstop>
   <tabstop>pb_deleteToolbar</tabstop>
   <tabstop>le_toolbarName</tabstop>
