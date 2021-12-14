@@ -436,7 +436,13 @@ void PsiActionList::Private::createMainWin()
 #endif
                                                           ,
             0, this);
-        actOnlineHome->setToolTip(tr("Join Psi Discussion Room (Online)"));
+        actPsiMUC->setToolTip(
+#ifdef PSI_PLUS
+            tr("Join Psi+ Discussion Room (Online)")
+#else
+            tr("Join Psi Discussion Room (Online)")
+#endif
+        );
 
         IconAction *actBugReport = new IconAction(tr("Report a Bug (Online)"), tr("Report a &Bug (Online)"), 0, this);
         actBugReport->setToolTip(tr("Report a Bug (Online)"));
